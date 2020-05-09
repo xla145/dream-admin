@@ -2,7 +2,7 @@ package com.xula.controller.sysauth;
 
 
 import com.alibaba.fastjson.JSONArray;
-import com.xula.shiro.utils.ShiroUtils;
+import com.xula.utils.ShiroUtils;
 import com.xula.service.auth.IAuthService;
 import com.xula.service.auth.ISysActionService;
 import org.springframework.beans.factory.annotation.Autowired;

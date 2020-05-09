@@ -2,8 +2,8 @@ package com.xula.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.xula.shiro.utils.JsonBean;
-import com.xula.shiro.utils.ShiroUtils;
+import com.xula.utils.JsonBean;
+import com.xula.utils.ShiroUtils;
 import com.xula.shiro.realm.UserRealm;
 import com.xula.service.auth.IAuthService;
 import org.springframework.beans.factory.annotation.Autowired;

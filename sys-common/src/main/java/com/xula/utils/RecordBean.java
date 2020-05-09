@@ -1,5 +1,7 @@
-package com.xula.shiro.utils;
+package com.xula.utils;
 
+
+import lombok.Data;
 
 /**
  * 响应请求消息对象
@@ -7,11 +9,13 @@ package com.xula.shiro.utils;
  * @param <T>
  * @author caibin
  */
+@Data
 public class RecordBean<T> {
+
     //失败
-    public static final int ERROR = -1;
+    private static final int ERROR = -1;
     // 成功
-    public static final int OK = 0;
+    private static final int OK = 0;
 
 
     private int code;
@@ -48,30 +52,4 @@ public class RecordBean<T> {
     public static <T> RecordBean<T> success(String msg, T data) {
         return new RecordBean<T>(OK, msg, data);
     }
-
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
 }

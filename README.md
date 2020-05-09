@@ -13,7 +13,7 @@ dream-admin是基于springBoot 2.0 的一个快速开发平台，拥有用户管
 ## 技术选型：
 - 核心框架：Spring Boot 2.0.0 RELEASE
 - 安全框架：Apache Shiro 1.4
-- 持久层框架：easy-dao 
+- 持久层框架：easy-dao  [参考使用](https://github.com/xla145/easy-dao)
 - 数据库连接池：Druid 1.1.3
 - 日志管理：SLF4J 1.7、Log4j
 - 页面：layui
@@ -32,6 +32,17 @@ dream-admin是基于springBoot 2.0 的一个快速开发平台，拥有用户管
 ![输入图片说明](https://github.com/xla145/dream-admin/blob/master/screenshots/1535616301.jpg "1535616301.png")
 ![输入图片说明](https://github.com/xla145/dream-admin/blob/master/screenshots/1535616321.jpg "1535616321.png")
 ![输入图片说明](https://github.com/xla145/dream-admin/blob/master/screenshots/1535616357.jpg "1535616357.png")
+
+## 注意
+
+由于项目中 `shiro-freemarker-tags` 和 `easy-dao` 包不来源于互联网，所以使用前参考以下方法引入
+
+* [如何引入`shiro-freemarker-tags`](https://github.com/xla145/shiro-freemarker-tags) 
+* [如何引入`esay-dao`](https://github.com/xla145/easy-dao) 
+
+
+
+
 
 
 

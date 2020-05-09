@@ -3,7 +3,7 @@ package com.xula.service.auth;
 
 import cn.assist.easydao.common.Conditions;
 import cn.assist.easydao.pojo.PagePojo;
-import com.xula.shiro.utils.RecordBean;
+import com.xula.utils.RecordBean;
 import com.xula.entity.SysAction;
 import com.xula.entity.SysUserAction;
 import com.xula.entity.TreeNode;

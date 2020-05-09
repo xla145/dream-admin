@@ -1,4 +1,4 @@
-package com.xula.shiro.utils;
+package com.xula.utils;
 
 import cn.assist.easydao.util.PojoHelper;
 import org.apache.commons.codec.digest.DigestUtils;

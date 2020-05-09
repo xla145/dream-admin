@@ -1,4 +1,10 @@
 spring:
+    redis:
+        prefix: dream_admin_dev
+        database: 0
+        host: localhost
+        password:
+        port: 6379
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         druid:
@@ -30,11 +36,6 @@ spring:
                 wall:
                     config:
                         multi-statement-allow: true
-# mache
-
-memcached:
-    ip: 192.168.1.6
-    port: 11211
 is:
   dev: true
 online:

@@ -1,22 +1,53 @@
 # Tomcat
 server:
-    tomcat:
-        uri-encoding: UTF-8
-        max-threads: 1000
-        min-spare-threads: 30
-    port: 8080
-    connection-timeout: 1200000
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8080
+  connection-timeout: 1200000
 spring:
-    # 环境 dev|pro
-    profiles:
-        active: dev
-    # jackson时间格式化
-    jackson:
-        time-zone: GMT+8
-        date-format: yyyy-MM-dd HH:mm:ss
-    freemarker:
-        content-type: text/html; charset=utf-8
-        suffix: .html
-        template-loader-path: classpath:/views/
-        cache: false
+  # 环境 dev|pro
+  profiles:
+    active: dev
+  # jackson时间格式化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  freemarker:
+    content-type: text/html; charset=utf-8
+    suffix: .html
+    template-loader-path: classpath:/views/
+    cache: false
+    ######################## Spring Shiro start ########################
+  shiro:
+    # 是否启用
+    enable: true
+    loginUrl: /login.html
+    successUrl: /index.html
+    unauthorizedUrl: /404.html
+    # shiro ini 多行字符串配置
+    filter-chain-definitions: |
+      /static/**=anon
+      /captcha.jpg=anon
+      /login.html=anon
+    # 权限配置
+    permission:
+    # 排除登陆登出相关
+    - urls: /sys/login,/sys/logout
+      permission: anon
+  ######################## Spring Shiro end ##########################
 
+############################### Redis 公共配置 start ###############################
+---
+spring:
+  redis:
+    timeout: 10s
+    lettuce:
+      pool:
+        max-active: 200
+        max-idle: 8
+        max-wait: 10s
+        min-idle: 2
+      shutdown-timeout: 3s
+############################### Redis 公共配置 end ##################################

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.xula.shiro.utils;
+package com.xula.utils;
 
 
 import java.util.LinkedHashMap;
@@ -27,6 +27,7 @@ import java.util.Map;
  */
 
 public class Query extends LinkedHashMap<String, Object> {
+
     private static final long serialVersionUID = 1L;
     //当前页码
     private int page;
@@ -34,7 +35,6 @@ public class Query extends LinkedHashMap<String, Object> {
     private int limit;
 
     public Query(Map<String, Object> params) {
-
         this.putAll(params);
         //分页参数
         this.page = Integer.parseInt(params.get("pageNo").toString());
@@ -42,12 +42,6 @@ public class Query extends LinkedHashMap<String, Object> {
         this.put("offset", (page - 1) * limit);
         this.put("pageNo", page);
         this.put("pageSize", limit);
-
-//        //防止SQL注入（因为sidx、order是通过拼接SQL实现排序的，会有SQL注入风险）
-//        String sidx = params.get("field").toString();
-//        String order = params.get("sort").toString();
-//        this.put("field", SQLFilter.sqlInject(sidx));
-//        this.put("sort", SQLFilter.sqlInject(order));
     }
 
     public int getPage() {

@@ -1,6 +1,7 @@
 package com.xula.config;
 
-import com.yuelinghui.shiro.freemarker.ShiroTags;
+
+import com.xula.shiro.freemarker.ShiroTags;
 import freemarker.template.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

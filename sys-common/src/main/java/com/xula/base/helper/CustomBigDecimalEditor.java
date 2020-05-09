@@ -1,16 +1,13 @@
 package com.xula.base.helper;
 
-import com.xula.shiro.utils.NumberUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.beans.PropertyEditorSupport;
+import java.math.BigDecimal;
 
 /**
- * 类说明: BigDecimal custom property editor<br> 
- * 创建时间: 2008-2-26 下午03:15:03<br> 
- *  
- * @author Seraph<br> 
- * @email: seraph@gmail.com<br> 
+ * 类说明: BigDecimal custom property editor
+ * @author xula
  */  
 public class CustomBigDecimalEditor extends PropertyEditorSupport {
 
@@ -20,7 +17,7 @@ public class CustomBigDecimalEditor extends PropertyEditorSupport {
             // Treat empty String as null value.  
             setValue(null);  
         } else {  
-            setValue(NumberUtils.getBigDecimal(text));
+            setValue(new BigDecimal(text).setScale(2, BigDecimal.ROUND_HALF_UP));
         }  
     }  
 }  

@@ -2,10 +2,10 @@ package com.xula.controller.sysauth;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.xula.shiro.utils.JsonBean;
-import com.xula.shiro.utils.RecordBean;
-import com.xula.shiro.utils.ReqUtils;
-import com.xula.shiro.utils.ShiroUtils;
+import com.xula.utils.JsonBean;
+import com.xula.utils.RecordBean;
+import com.xula.utils.ReqUtils;
+import com.xula.utils.ShiroUtils;
 import com.xula.entity.SysRole;
 import com.xula.entity.SysRoleAction;
 import com.xula.entity.TreeNode;

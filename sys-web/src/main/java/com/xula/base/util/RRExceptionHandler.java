@@ -18,7 +18,7 @@
 package com.xula.base.util;
 
 
-import com.xula.shiro.utils.JsonBean;
+import com.xula.utils.JsonBean;
 import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

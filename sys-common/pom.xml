@@ -8,7 +8,6 @@
         <version>1.0.0</version>
     </parent>
 
-
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.xla</groupId>
@@ -20,15 +19,21 @@
     <description>公共核心模块</description>
 
     <dependencies>
+
         <dependency>
             <groupId>cn.assist</groupId>
             <artifactId>easy-dao</artifactId>
-            <version>1.1.6</version>
         </dependency>
+
         <dependency>
-            <groupId>com.googlecode.xmemcached</groupId>
-            <artifactId>xmemcached</artifactId>
-            <version>2.3.2</version>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.ini4j</groupId>
+            <artifactId>ini4j</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.xula.shiro.utils;
+package com.xula.utils;
 
 
 import com.xula.entity.SysAction;

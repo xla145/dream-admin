@@ -4,14 +4,15 @@ import cn.assist.easydao.common.*;
 import cn.assist.easydao.dao.BaseDao;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.xula.base.cache.MCacheKit;
 import com.xula.entity.SysAction;
 import com.xula.entity.SysUserAction;
 import com.xula.service.auth.IAuthService;
 import com.xula.service.auth.ISysActionService;
+import com.xula.utils.RedisHandle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -37,10 +38,14 @@ public class AuthServiceImpl implements IAuthService {
     public static int ACTION_TYPE_MENU = 2;
 
     @Autowired
+    private RedisTemplate<Object, Object> redisTemplate;
+
+    @Autowired
     private ISysActionService sysActionService;
 
     private Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
-    private static String DEFAULTAUTHKEY = "com.yuelinghui.service.auth.impl.UserAuthServiceImpl";
+
+    private static String DEFAULTAUTHKEY = "com.xula.service.auth.impl.UserAuthServiceImpl";
 
 
     /**
@@ -49,7 +54,7 @@ public class AuthServiceImpl implements IAuthService {
     @Override
     public JSONArray getAllMenus() {
         String key = DEFAULTAUTHKEY + ".getAllMenus";
-        JSONArray array = MCacheKit.get(key);
+        JSONArray array = (JSONArray) RedisHandle.get(key);
         if (array != null) {
             return array;
         }
@@ -83,7 +88,7 @@ public class AuthServiceImpl implements IAuthService {
             }
         }
         if (navArr != null && navArr.size() > 0) {
-            MCacheKit.add(key, 60 * 10, navArr);
+            RedisHandle.add(key, navArr,60 * 10);
         }
         return navArr;
     }
@@ -97,7 +102,7 @@ public class AuthServiceImpl implements IAuthService {
     @Override
     public JSONArray getMenu(int uid) {
         String key = DEFAULTAUTHKEY + ".getUserMenus." + uid;
-        JSONArray array = MCacheKit.get(key);
+        JSONArray array = (JSONArray) RedisHandle.get(key);
         if (array == null) {
             array = this.getUserMenus(uid, key);
         }
@@ -114,7 +119,7 @@ public class AuthServiceImpl implements IAuthService {
     @Override
     public boolean isCall(int uid, int actionId) {
         String key = DEFAULTAUTHKEY + ".isCall." + uid;
-        Map<Integer, Boolean> map = MCacheKit.get(key);
+        Map<Integer, Boolean> map = (Map<Integer, Boolean>) RedisHandle.get(key);
         if (map == null || map.size() < 1) {
             map = this.getuserActions(uid, key);
         }
@@ -132,10 +137,10 @@ public class AuthServiceImpl implements IAuthService {
         String key2 = DEFAULTAUTHKEY + ".getUserMenus." + uid;
         String key3 = DEFAULTAUTHKEY + ".getAllMenus";
         String key4 = DEFAULTAUTHKEY + ".getSysUserAction." + uid;
-        MCacheKit.delete(key);
-        MCacheKit.delete(key2);
-        MCacheKit.delete(key3);
-        MCacheKit.delete(key4);
+        RedisHandle.delete(key);
+        RedisHandle.delete(key2);
+        RedisHandle.delete(key3);
+        RedisHandle.delete(key4);
         this.getuserActions(uid, key);
         this.getUserMenus(uid, key2);
         this.getAllMenus();
@@ -151,7 +156,7 @@ public class AuthServiceImpl implements IAuthService {
     @Override
     public List<SysAction> getSysUserAction(Integer uid) {
         String key = DEFAULTAUTHKEY + ".getSysUserAction." + uid;
-        List<SysAction> list = MCacheKit.get(key);
+        List<SysAction> list = (List<SysAction>) RedisHandle.get(key);
         if (list == null ||  list.isEmpty()) {
             list = this.getSysUserAction(uid,key);
         }
@@ -175,7 +180,7 @@ public class AuthServiceImpl implements IAuthService {
             for (SysUserAction sysUserAction : list) {
                 map.put(sysUserAction.getActionId(), true);
             }
-            MCacheKit.add(key, 60 * 60, map);
+            RedisHandle.add(key, map,60 * 60);
         }
         return map;
     }
@@ -214,7 +219,7 @@ public class AuthServiceImpl implements IAuthService {
             }
         }
         if (array.size() > 0) {
-            MCacheKit.add(key, 60 * 60, array);
+            RedisHandle.add(key, array,60 * 60);
         }
         return array;
     }
@@ -234,7 +239,7 @@ public class AuthServiceImpl implements IAuthService {
             list = sysActionService.getSysUserActionByUid(uid);
         }
         if (list.isEmpty()) {
-            MCacheKit.add(key, 60 * 60, list);
+            RedisHandle.add(key, list,60 * 60);
         }
         return list;
     }

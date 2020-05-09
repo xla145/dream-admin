@@ -1,8 +1,8 @@
 package com.xula.base.log;
 
 import com.alibaba.fastjson.JSON;
-import com.xula.shiro.utils.ReqUtils;
-import com.xula.shiro.utils.ShiroUtils;
+import com.xula.utils.ReqUtils;
+import com.xula.utils.ShiroUtils;
 import com.xula.entity.SysOperatorLog;
 import com.xula.service.sys.log.ISysOperatorLogService;
 import org.aspectj.lang.JoinPoint;

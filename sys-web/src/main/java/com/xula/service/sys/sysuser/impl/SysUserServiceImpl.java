@@ -3,13 +3,13 @@ package com.xula.service.sys.sysuser.impl;
 import cn.assist.easydao.common.*;
 import cn.assist.easydao.dao.BaseDao;
 import cn.assist.easydao.pojo.PagePojo;
-import com.xula.base.cache.MCache;
-import com.xula.shiro.utils.CommonUtil;
-import com.xula.shiro.utils.RecordBean;
+import com.xula.utils.CommonUtil;
+import com.xula.utils.RecordBean;
 import com.xula.base.constant.SysUserConstant;
 import com.xula.entity.SysAction;
 import com.xula.service.sys.sysuser.ISysUserService;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -66,7 +66,7 @@ public class SysUserServiceImpl implements ISysUserService {
      * @param
      * @return
      */
-    @MCache(expire = 30)
+    @Cacheable
     @Override
     public SysAction.SysUser getSysUser(int uid) {
         SysAction.SysUser sysUser = BaseDao.dao.queryForEntity(SysAction.SysUser.class, uid);
@@ -80,7 +80,7 @@ public class SysUserServiceImpl implements ISysUserService {
      * @return
      */
     @Override
-    @MCache(expire = 30)
+    @Cacheable
     public PagePojo<SysAction.SysUser> getSysUsers(Map<String, Object> map) {
 
         int pageNo = (int) map.get("pageNo");

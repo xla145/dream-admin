@@ -25,7 +25,6 @@ public class ConfigDao {
         return DruidDataSourceBuilder.create().build();
     }
 
-
     /**
      * 使用 easy-dao
      * @return
@@ -37,7 +36,6 @@ public class ConfigDao {
         DataSourceHolder.setDev(true);
         return dataSourceHolder;
     }
-
 
     /**
      * 创建事务

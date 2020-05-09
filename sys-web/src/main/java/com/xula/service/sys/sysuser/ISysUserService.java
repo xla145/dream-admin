@@ -2,7 +2,7 @@ package com.xula.service.sys.sysuser;
 
 
 import cn.assist.easydao.pojo.PagePojo;
-import com.xula.shiro.utils.RecordBean;
+import com.xula.utils.RecordBean;
 import com.xula.entity.SysAction;
 
 import java.util.Map;

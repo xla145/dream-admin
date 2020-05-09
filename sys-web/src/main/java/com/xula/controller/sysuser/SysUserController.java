@@ -7,7 +7,7 @@ import com.xula.base.constant.SysUserConstant;
 import com.xula.controller.BaseController;
 import com.xula.entity.SysAction;
 import com.xula.service.sys.sysuser.ISysUserService;
-import com.xula.shiro.utils.*;
+import com.xula.utils.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
